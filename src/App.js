@@ -1,10 +1,22 @@
-import "./styles.css";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Header from "./containers/Header";
+import ProductListing from "./containers/ProductListing";
+import ProductDetail from "./containers/ProductDetail";
 
-export default function App() {
+function App() {
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/" exact component={ProductListing} />
+          <Route path="/product/:productId" exact component={ProductDetail} />
+          <Route>404 Not Found!</Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
+
+export default App;
